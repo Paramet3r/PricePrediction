@@ -26,6 +26,9 @@ public class SubscriptionPlanService {
     }
 
     public boolean verifySymbolLimit(final User user, final String symbol) {
+        if (user.getSubscriptionPlan().getSymbolLimit() < 0) {
+            return true;
+        }
         final Set<String> requestedSymbols = requestRepository.getSymbolsWithinDaysForUser(user.getId(), 30);
         return requestedSymbols.contains(symbol) || requestedSymbols.size() <= user.getSubscriptionPlan().getSymbolLimit();
     }
