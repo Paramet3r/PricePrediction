@@ -33,7 +33,7 @@ public class PredictionControllerTest extends ControllerTestBase {
         final MvcResult firstResult = requestPrediction("testThrottling", "spy");
         final MvcResult secondResult = requestPrediction("testThrottling", "spy");
 
-        assertEquals(TOO_MANY_REQUESTS.value(), firstResult.getResponse().getStatus());
+        assertEquals(OK.value(), firstResult.getResponse().getStatus());
         assertEquals(TOO_MANY_REQUESTS.value(), secondResult.getResponse().getStatus());
     }
 
